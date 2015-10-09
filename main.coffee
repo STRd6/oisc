@@ -58,8 +58,14 @@ randomFill = (buffer) ->
     buffer[i] = rand()
     i += 1
 
-randomFill comp
-console.log comp
+seqFill = (buffer) ->
+  l = buffer.length
+  i = 0
+  while i < l
+    buffer[i] = i
+    i += 1
+
+seqFill comp
 
 subneg = (data) ->
   pc = data[0]
