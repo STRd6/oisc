@@ -7,7 +7,7 @@ style.innerHTML = """
     overflow: hidden;
     background-color: black;
   }
-  
+
   canvas {
     background-color: white;
     margin: auto;
@@ -35,7 +35,7 @@ context = canvas.getContext('2d')
 rand = ->
   Math.floor Math.random() * 256
 
-draw2 = (data, context) ->
+draw = (data, context) ->
   imageData = context.getImageData 0, 0, 16, 16
 
   id = imageData.data
@@ -48,13 +48,6 @@ draw2 = (data, context) ->
     id[4 * i + 2] = 0
     id[4 * i + 3] = v
     i += 1
-
-  context.putImageData imageData, 0, 0
-
-draw = (data, context) ->
-  imageData = context.getImageData 0, 0, 8, 8
-  
-  imageData.data.set(data)
 
   context.putImageData imageData, 0, 0
 
@@ -82,12 +75,12 @@ subleq = (data) ->
 
   console.log pc, a, b, r
 
-  if r < 0
+  if r <= 0
     data[0] = b
   else
     data[0] = next
 
 setInterval ->
   subleq(comp)
-  draw2 comp, context
+  draw comp, context
 , 10
