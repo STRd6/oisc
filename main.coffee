@@ -61,7 +61,7 @@ randomFill = (buffer) ->
 randomFill comp
 console.log comp
 
-subleq = (data) ->
+subneg = (data) ->
   pc = data[0]
   acc = data[1]
 
@@ -71,16 +71,16 @@ subleq = (data) ->
     next = 0
   b = data[next]
 
-  data[1] = data[pc] = r = a - acc
+  acc = data[1] = data[pc] = r = a - acc
 
-  console.log pc, a, b, r
+  console.log "PC: #{pc}, ACC: #{acc}, A: #{a}, B: #{b}, R: #{r}"
 
-  if r <= 0
+  if r < 0
     data[0] = b
   else
     data[0] = next
 
 setInterval ->
-  subleq(comp)
+  subneg(comp)
   draw comp, context
 , 10
