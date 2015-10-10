@@ -65,7 +65,7 @@ seqFill = (buffer) ->
     buffer[i] = i
     i += 1
 
-seqFill comp
+randomFill comp
 
 subneg = (data) ->
   pc = data[0]
